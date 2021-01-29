@@ -1,0 +1,30 @@
+{
+    "name": "douglas-bernardo/api-timesharing",
+    "description": "Web Service Beach Park CM Timesharing",
+    "minimum-stability": "stable",
+    "authors": [{
+        "name": "Jackson Douglas B. Feijão",
+        "email": "jkdouglas21@gmail.com",
+        "role": "Developer"
+    }],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\":"source/"
+        },
+        "files": [
+            "source/Helpers/Helpers.php"
+        ]
+    },
+    "require": {
+        "monolog/monolog": "^2.1",
+        "ext-json": "*",
+        "filp/whoops": "^2.9",
+        "ext-oci8": "*",
+        "symfony/http-foundation": "^5.2",
+        "symfony/routing": "^5.2",
+        "symfony/http-kernel": "^5.2"
+    }
+}

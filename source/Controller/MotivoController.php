@@ -12,7 +12,7 @@ class MotivoController
     public function index()
     {
         try {
-            Transaction::open('api_renegociacao');
+            Transaction::open($_ENV['APPLICATION']);
 
             $repository = new Repository('Source\Models\Motivo', true);
             $criteria = new Criteria;

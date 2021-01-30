@@ -16,7 +16,7 @@ class DocumentosCobrancaController
                 return new JsonResponse(['error' => 'parameter idvendats not informed or invalid']);
             }
 
-            Transaction::open('api_renegociacao');
+            Transaction::open($_ENV['APPLICATION']);
 
             $repository = new Repository('Source\Models\DocumentosCobranca', true);
             $repository->addViewParameter('PARAM_FILTER', "V.IDVENDATS = {$idvendats}");

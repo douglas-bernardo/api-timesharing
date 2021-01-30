@@ -17,7 +17,7 @@ class ContratoController
                 return new JsonResponse(['error' => 'parameter idvendaxcontrato not informed or invalid']);
             }
 
-            Transaction::open('api_renegociacao');
+            Transaction::open($_ENV['APPLICATION']);
 
             $repository = new Repository('Source\Models\Contrato', true);
             $criteria = new Criteria;

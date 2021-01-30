@@ -12,7 +12,7 @@ class ProjetoTSController
     public function index()
     {
         try {
-            Transaction::open('api_renegociacao');
+            Transaction::open($_ENV['APPLICATION']);
 
             $repository = new Repository('Source\Models\ProjetoTS', true);
             $criteria = new Criteria;

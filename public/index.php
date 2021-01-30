@@ -10,6 +10,9 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 
+$dotenv = Dotenv\Dotenv::createImmutable( dirname(__DIR__ . '../') );
+$dotenv->load();
+
 $request = Request::createFromGlobals();
 $routes = include __DIR__ . '/../source/Routes/routes.php';
 

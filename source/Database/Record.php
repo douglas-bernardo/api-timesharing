@@ -88,7 +88,7 @@ abstract class Record
 
     public function fromArray($data)
     {
-        $this->data = $data;
+        $this->data = array_map('trim', $data);
     }
 
     public function toArray()

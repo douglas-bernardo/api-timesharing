@@ -18,16 +18,19 @@ class ContratoController
             }
 
             Transaction::open($_ENV['APPLICATION']);
+            $result = array();
 
             $repository = new Repository('Source\Models\Contrato', true);
             $criteria = new Criteria;
             $criteria->add(new Filter('idvendaxcontrato', '=', $idvendaxcontrato));
             $contratos = $repository->load($criteria);
 
-            foreach ($contratos as $contrato) {
-                $result[] = $contrato->toArray();
+            if ($contratos) {
+                foreach ($contratos as $contrato) {
+                    $result[] = $contrato->toArray();
+                }
             }
-
+            
             return new JsonResponse([
                 'total' => count($result),
                 'data' => $result

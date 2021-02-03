@@ -17,14 +17,17 @@ class DocumentosCobrancaController
             }
 
             Transaction::open($_ENV['APPLICATION']);
+            $result = array();
 
             $repository = new Repository('Source\Models\DocumentosCobranca', true);
             $repository->addViewParameter('PARAM_FILTER', "V.IDVENDATS = {$idvendats}");
             $criteria = new Criteria;
             $docs = $repository->load($criteria);
 
-            foreach ($docs as $doc) {
-                $result[] = $doc->toArray();
+            if ($docs) {
+                foreach ($docs as $doc) {
+                    $result[] = $doc->toArray();
+                }
             }
 
             return new JsonResponse([

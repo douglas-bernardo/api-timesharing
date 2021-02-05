@@ -14,22 +14,29 @@ class MotivoController
         try {
             Transaction::open($_ENV['APPLICATION']);
 
+            $result = array();
             $repository = new Repository('Source\Models\Motivo', true);
             $criteria = new Criteria;
             $motivos = $repository->load($criteria);
 
-            foreach ($motivos as $motivo) {
-                $result[] = $motivo->toArray();
+            if ($motivos) {
+                foreach ($motivos as $motivo) {
+                    $result[] = $motivo->toArray();
+                }
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 }

@@ -24,6 +24,9 @@ $routes->add('documentos_cobranca', new Route('/cobranca/{idvendats}/docs', [
     '_controller' => 'Source\Controller\DocumentosCobrancaController::show'
 ]));
 
+/**
+ * Routes Projetos
+ */
 $routes->add('projetots', new Route('/projetots', [
     '_controller' => 'Source\Controller\ProjetoTSController::index'
 ]));

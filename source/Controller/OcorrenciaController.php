@@ -9,7 +9,6 @@ use Source\Database\Transaction;
 use Source\Log\LoggerTXT;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class OcorrenciaController
 {
@@ -30,19 +29,33 @@ class OcorrenciaController
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 
     public function show($ocorrenciaId)
     {
         try {
+
+            if (!isset($ocorrenciaId)) {
+                return new JsonResponse([
+                    'status' => 'fail',
+                    'data' => [
+                        'ocorrenciaId' => 'parameter ocorrenciaId not informed or invalid'
+                    ]
+                ]);
+            }
+
             Transaction::open($_ENV['APPLICATION']);
 
             $repository = new Repository('Source\Models\Ocorrencia', true);
@@ -50,16 +63,19 @@ class OcorrenciaController
             $criteria->add(new Filter('numero_ocorrencia', '=', $ocorrenciaId));
             $result = $repository->load($criteria);
 
-            $ocorrencia = $result ? $result[0]->toArray() : null;
+            $result = $result ? $result[0]->toArray() : [];
 
             return new JsonResponse([
-                'total' => count($result),
-                'data' => $ocorrencia
+                'status' => 'success',
+                'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 
@@ -67,7 +83,7 @@ class OcorrenciaController
     {
         try {
             Transaction::open($_ENV['APPLICATION']);
-            Transaction::setLogger(new LoggerTXT(__DIR__ . '/../../tmp/listAfter.log'));
+            Transaction::setLogger(new LoggerTXT(__DIR__ . '/../../tmp/listAfterNumber.log'));
             $result = array();
 
             $repository = new Repository('Source\Models\Ocorrencia', true);
@@ -82,13 +98,17 @@ class OcorrenciaController
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 
@@ -102,7 +122,7 @@ class OcorrenciaController
             }
 
             Transaction::open($_ENV['APPLICATION']);
-            Transaction::setLogger(new LoggerTXT(__DIR__ . '/../../tmp/listAfter.log'));
+            Transaction::setLogger(new LoggerTXT(__DIR__ . '/../../tmp/listAfterDate.log'));
             $result = array();
 
             $repository = new Repository('Source\Models\Ocorrencia', true);
@@ -117,13 +137,17 @@ class OcorrenciaController
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 

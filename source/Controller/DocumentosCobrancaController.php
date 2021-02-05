@@ -12,8 +12,14 @@ class DocumentosCobrancaController
     public function show($idvendats)
     {
         try {
+
             if (!isset($idvendats)) {
-                return new JsonResponse(['error' => 'parameter idvendats not informed or invalid']);
+                return new JsonResponse([
+                    'status' => 'fail',
+                    'data' => [
+                        'idvendats' => 'parameter idvendats not informed or invalid'
+                    ]
+                ]);
             }
 
             Transaction::open($_ENV['APPLICATION']);
@@ -31,13 +37,17 @@ class DocumentosCobrancaController
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 }

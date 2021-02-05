@@ -14,22 +14,29 @@ class ProjetoTSController
         try {
             Transaction::open($_ENV['APPLICATION']);
 
+            $result = array();
             $repository = new Repository('Source\Models\ProjetoTS', true);
             $criteria = new Criteria;
             $projetos = $repository->load($criteria);
 
-            foreach ($projetos as $projeto) {
-                $result[] = $projeto->toArray();
+            if ($projetos) {
+                foreach ($projetos as $projeto) {
+                    $result[] = $projeto->toArray();
+                }
             }
 
             return new JsonResponse([
+                'status' => 'success',
                 'total' => count($result),
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 }

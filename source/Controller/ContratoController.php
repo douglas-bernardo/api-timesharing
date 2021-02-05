@@ -13,32 +13,36 @@ class ContratoController
     public function show($idvendaxcontrato)
     {
         try {
+            
             if (!isset($idvendaxcontrato)) {
-                return new JsonResponse(['error' => 'parameter idvendaxcontrato not informed or invalid']);
+                return new JsonResponse([
+                    'status' => 'fail',
+                    'data' => [
+                        'idvendaxcontrato' => 'parameter idvendaxcontrato not informed or invalid'
+                    ]
+                ]);
             }
 
             Transaction::open($_ENV['APPLICATION']);
-            $result = array();
 
             $repository = new Repository('Source\Models\Contrato', true);
             $criteria = new Criteria;
             $criteria->add(new Filter('idvendaxcontrato', '=', $idvendaxcontrato));
-            $contratos = $repository->load($criteria);
+            $result = $repository->load($criteria);
 
-            if ($contratos) {
-                foreach ($contratos as $contrato) {
-                    $result[] = $contrato->toArray();
-                }
-            }
-            
+            $result = $result ? $result[0]->toArray() : [];
+
             return new JsonResponse([
-                'total' => count($result),
+                'status' => 'success',
                 'data' => $result
             ]);
 
             Transaction::close();
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
         }
     }
 }

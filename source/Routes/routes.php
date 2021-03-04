@@ -50,4 +50,16 @@ $routes->add('ocorrencias_show', new Route('/ocorrencias/{ocorrenciaId}', [
     '_controller' => 'Source\Controller\OcorrenciaController::show'
 ]));
 
+
+/**
+ * Routes Atendimento
+ */
+$routes->add('atendimentos', new Route('/atendimentos', [
+    '_controller' => 'Source\Controller\AtendimentoController::index'
+]));
+
+$routes->add('atendimentos_show', new Route('/atendimentos/{idclientets}', [
+    '_controller' => 'Source\Controller\AtendimentoController::show'
+]));
+
 return $routes;

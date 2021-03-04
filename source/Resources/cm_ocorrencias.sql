@@ -179,3 +179,4 @@ WHERE
         AND D.IDDEPARTAMENTO IN (3, 83) -- ADM TS - RENEGOCIAÇÃO
         AND O.STATUS IN ('P', 'F') -- Pendente / Finalizado
         AND TO_DATE(TO_CHAR(O.DTOCORRENCIA,'dd/mm/yyyy'), 'dd/mm/yyyy') >= TO_DATE('01/01/2021', 'dd/mm/yyyy')
+        ORDER BY O.IDOCORRENCIA

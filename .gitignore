@@ -1,5 +1,6 @@
 .idea/
 tmp/
+logs/
 vendor/
-source/Config/api_renegociacao.ini
+src/Shared/Config/api_renegociacao.ini
 .env

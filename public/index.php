@@ -1,30 +1,23 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
+header('Access-Control-Expose-Headers: x-total-count');
+if($_SERVER["REQUEST_METHOD"] == "OPTIONS") exit();
+
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Source\Core\Framework;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
-use Symfony\Component\HttpKernel\Controller\ControllerResolver;
-use Symfony\Component\Routing\Matcher\UrlMatcher;
-use Symfony\Component\Routing\RequestContext;
 
 $dotenv = Dotenv\Dotenv::createImmutable( dirname(__DIR__ . '../') );
 $dotenv->load();
 
+$routes = include __DIR__ . '/../src/Shared/Infra/Http/Routes/routes.php';
+$container = include __DIR__ . '/../src/Shared/Container/container.php';
+$container->setParameter('routes', $routes);
+
 $request = Request::createFromGlobals();
-$routes = include __DIR__ . '/../source/Routes/routes.php';
 
-$response = new Response();
+$response = $container->get('framework')->handle($request);
 
-$context = new RequestContext();
-$matcher = new UrlMatcher($routes, $context);
-
-$controllerResolver = new ControllerResolver();
-$argumentResolver = new ArgumentResolver();
-
-$framework = new Framework($matcher,$controllerResolver, $argumentResolver);
-
-$response = $framework->handle($request);
 $response->send();

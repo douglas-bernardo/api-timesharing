@@ -12,10 +12,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Source\\":"source/"
+            "App\\": "src/"
         },
         "files": [
-            "source/Helpers/Helpers.php"
+          "src/Shared/Helpers/Helpers.php"
         ]
     },
     "require": {
@@ -25,6 +25,11 @@
         "symfony/http-foundation": "^5.2",
         "symfony/routing": "^5.2",
         "symfony/http-kernel": "^5.2",
-        "vlucas/phpdotenv": "^5.3"
+        "vlucas/phpdotenv": "^5.3",
+        "symfony/event-dispatcher": "^5.2",
+        "symfony/dependency-injection": "^5.2",
+        "ext-pdo": "*",
+        "symfony/yaml": "^5.2",
+        "symfony/config": "^5.2"
     }
 }

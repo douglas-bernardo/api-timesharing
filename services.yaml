@@ -1,0 +1,42 @@
+services:
+  occurrence.repository:
+    class: App\Modules\Occurrence\Infra\Database\Repository\OccurrenceRepository
+  occurrence.service:
+    class: App\Modules\Occurrence\Services\ListOccurrencesService
+    arguments: ["@occurrence.repository"]
+
+  showOccurrence.service:
+    class: App\Modules\Occurrence\Services\ShowOccurrenceService
+    arguments: ["@occurrence.repository"]
+
+  listOccurrenceByNumber.service:
+    class: App\Modules\Occurrence\Services\ListRecentOccurrencesByNumberService
+    arguments: ["@occurrence.repository"]
+
+  listOccurrenceByDate.service:
+    class: App\Modules\Occurrence\Services\ListRecentOccurrencesByDateService
+    arguments: [ "@occurrence.repository" ]
+
+  productTs.repository:
+    class: App\Modules\ProductTS\Infra\Database\Repository\ProductTsRepository
+  listProductTsService.service:
+    class: App\Modules\ProductTS\Services\ListProductTsService
+    arguments: [ "@productTs.repository" ]
+
+  afterSalesCustomerService.repository:
+    class: App\Modules\AfterSalesCustomerService\Infra\Database\Repository\AfterSalesCustomerServiceRepository
+  listAfterSalesCustomerService.service:
+    class: App\Modules\AfterSalesCustomerService\Services\ListAfterSalesCustomerService
+    arguments: [ "@afterSalesCustomerService.repository" ]
+
+  billingDocuments.repository:
+    class: App\Modules\BillingDocuments\Infra\Database\Repository\BillingDocumentsRepository
+  listBillingDocumentsService.service:
+    class: App\Modules\BillingDocuments\Services\ListBillingDocumentsService
+    arguments: [ "@billingDocuments.repository" ]
+
+  contract.repository:
+    class: App\Modules\Contract\Infra\Database\Repository\ContractRepository
+  showContract.service:
+    class: App\Modules\Contract\Services\ShowContractService
+    arguments: [ "@contract.repository" ]

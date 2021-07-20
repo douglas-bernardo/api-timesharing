@@ -15,7 +15,7 @@ const CONF_LOG_FILE =  __DIR__ . '/../../../logs/log.log';
  */
 
  /**
-  * Reads CM queries located in the default 'resources' folder
+  * Reads queries located in the default 'resources' folder
   *
   * @param string $queryName
   * @return string|null

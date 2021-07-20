@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\UserSystem\Infra\Http\Controllers\UserSystemController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
@@ -8,8 +9,15 @@ $routes = new RouteCollection();
 
 $routes->add('root', new Route('/', [
     '_controller' => function(){
-        return new Response('2021 - API Timesharing | Powered by Jackson Douglas!');
+        return new Response('2021 - API Timesharing | Powered By Análise e Controle BPVC');
     }
+]));
+
+/**
+ * User System Timesharing
+ */
+$routes->add('user-system', new Route('/user-system', [
+    '_controller' => [UserSystemController::class, 'index']
 ]));
 
 /**

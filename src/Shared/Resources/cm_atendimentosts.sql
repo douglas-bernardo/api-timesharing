@@ -1,5 +1,5 @@
 SELECT
-    u.nomeusuario,
+    TRIM(u.nomeusuario) AS nomeusuario,
     p.idcliente,
     m.descricao,
     o.observacao,

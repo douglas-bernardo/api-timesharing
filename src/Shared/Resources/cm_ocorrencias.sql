@@ -2,16 +2,16 @@ SELECT
         O.IDOCORRENCIA                                   AS NUMERO_OCORRENCIA,
         O.IDVENDAXCONTRATO,
         VC.IDVENDATS,
-        O.STATUS,
+        O.STATUS                                         AS STATUS_TS,
         O.IDMOTIVOTS,
         M.DESCRICAO                                      AS MOTIVO,
         TO_CHAR(O.DTOCORRENCIA, 'YYYY-MM-DD HH24:MI:SS') AS DTOCORRENCIA,
         D.IDDEPARTAMENTO,
-        D.DESCRICAO                                      AS DEPARTAMENTO,
+        TRIM(D.DESCRICAO)                                AS DEPARTAMENTO,
         MF.IDMOTIVOTS                                    AS IDMOTIVOTS_FINALIZACAO,
         MF.DESCRICAO                                     AS MOTIVO_FINALIZACAO,
         U.IDUSUARIO                                      AS IDUSUARIO_CADASTRO,
-        U.NOMEUSUARIO                                    AS NOMEUSUARIO_CADASTRO,
+        TRIM(U.NOMEUSUARIO)                              AS NOMEUSUARIO_CADASTRO,
         P.IDPESSOA                                       AS IDPESSOA_CLIENTE,
         P.NOME                                           AS NOME_CLIENTE,
         PR.NUMEROPROJETO,
@@ -45,8 +45,8 @@ SELECT
                 -- VALORVENDANORMAL.VALORCONTRATONORMAL                 
                 VALORVENDATRGDTINCLUSAO.VALORCONTRATOTRGDTINCLUSAO + NVL(VALORJUROSVENDANORMAL.VALORJUROSVENDANORMAL, 0) -- TESTE
         END)                                    AS VALOR_VENDA,
-        UR.IDUSUARIO                            AS IDUSUARIO_RESP, 
-        UR.NOMEUSUARIO                          AS NOMEUSUARIO_RESP
+        UR.IDUSUARIO                            AS IDUSUARIO_RESP,
+        TRIM(UR.NOMEUSUARIO)                    AS NOMEUSUARIO_RESP
         -- DEBUG VALOR_VENDA
         /*
         VALORVENDATRGDTINCLUSAO.VALORCONTRATOTRGDTINCLUSAO,

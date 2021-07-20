@@ -104,7 +104,7 @@ abstract class Record
      */
     public function fromArray($data): void
     {
-        $this->data = array_map('trim', $data);
+        $this->data = $data;
     }
 
     /**

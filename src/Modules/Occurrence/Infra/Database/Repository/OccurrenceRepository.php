@@ -88,8 +88,8 @@ class OccurrenceRepository implements IOccurrenceRepository
 
     /**
      * @param string $occurrenceNumber
-     * @return \App\Modules\Occurrence\Infra\Database\Entity\Occurrence|null
-     * @throws \Exception
+     * @return Occurrence|null
+     * @throws Exception
      */
     public function findByNumber(string $occurrenceNumber): ?Occurrence
     {

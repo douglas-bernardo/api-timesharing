@@ -4,6 +4,10 @@ namespace App\Shared\Infra\Database;
 
 use Exception;
 
+/**
+ * Class Repository
+ * @package App\Shared\Infra\Database
+ */
 final class Repository
 {
     /**
@@ -24,11 +28,11 @@ final class Repository
     protected array $viewParameters = [];
 
     /**
-     * Repositories constructor.
+     * Repository constructor.
      * @param string $class
-     * @param false $viewMode
+     * @param bool $viewMode
      */
-    function __construct(string $class, $viewMode = false)
+    function __construct(string $class, bool $viewMode = false)
     {
         $this->activeRecord = $class;
         $this->viewMode = $viewMode;

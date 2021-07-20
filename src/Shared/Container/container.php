@@ -1,5 +1,6 @@
 <?php
 
+use App\Shared\Core\TokenSubscriber;
 use App\Shared\Core\Framework;
 use Symfony\Component\DependencyInjection;
 use Symfony\Component\DependencyInjection\Reference;
@@ -25,9 +26,12 @@ $containerBuilder->register('listener.router', HttpKernel\EventListener\RouterLi
 $containerBuilder->register('listener.exception', HttpKernel\EventListener\ErrorListener::class)
                 ->setArguments(['App\Shared\Bundle\Controller\ErrorController::exception']);
 
+$containerBuilder->register('listener.auth', TokenSubscriber::class);
+
 $containerBuilder->register('dispatcher', EventDispatcher\EventDispatcher::class)
                 ->addMethodCall('addSubscriber', [new Reference('listener.router')])
-                ->addMethodCall('addSubscriber', [new Reference('listener.exception')]);
+                ->addMethodCall('addSubscriber', [new Reference('listener.exception')])
+                ->addMethodCall('addSubscriber', [new Reference('listener.auth')]);
 
 $containerBuilder->register('framework', Framework::class)
                 ->setArguments([

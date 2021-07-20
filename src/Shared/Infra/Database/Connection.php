@@ -14,8 +14,8 @@ final class Connection
 {
     /**
      * @param $name
-     * @return \PDO|null
-     * @throws \App\Shared\Errors\ApiException
+     * @return PDO|null
+     * @throws ApiException
      * @throws Exception
      */
     public static function open($name): ? PDO
@@ -50,7 +50,9 @@ final class Connection
 
                 case 'oracle':
                     $port = '1521';
+                    // $dbtns = "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = $host)(PORT = $port)) (CONNECT_DATA = (SERVICE_NAME = $name) (SID = $name)))";
                     $conn = new PDO("oci:dbname=$host:$port/$name;charset=AL32UTF8", $user, $pass);
+                    // $conn = new PDO("oci:dbname=$dbtns;charset=AL32UTF8", $user, $pass);
                     $conn->query("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD'");
                     break;
 

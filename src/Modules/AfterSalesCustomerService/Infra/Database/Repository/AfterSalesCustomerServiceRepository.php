@@ -29,6 +29,7 @@ class AfterSalesCustomerServiceRepository implements \App\Modules\AfterSalesCust
         Transaction::setLogger(Log::getInstance());
 
         $criteria = new Criteria();
+        $criteria->setProperty('order', 'dataobservacao DESC');
         $criteria->add(new Filter('idcliente', '=', $customerTSId));
 
         $repository = new Repository(AfterSalesCustomerService::class, true);

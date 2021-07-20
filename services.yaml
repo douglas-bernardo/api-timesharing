@@ -1,6 +1,7 @@
 services:
   occurrence.repository:
     class: App\Modules\Occurrence\Infra\Database\Repository\OccurrenceRepository
+
   occurrence.service:
     class: App\Modules\Occurrence\Services\ListOccurrencesService
     arguments: ["@occurrence.repository"]
@@ -40,3 +41,9 @@ services:
   showContract.service:
     class: App\Modules\Contract\Services\ShowContractService
     arguments: [ "@contract.repository" ]
+
+  userSystem.repository:
+    class: App\Modules\UserSystem\Infra\Database\Repository\UserSystemRepository
+  findUserSystem.service:
+    class: App\Modules\UserSystem\Services\FindUserSystemService
+    arguments: [ "@userSystem.repository" ]

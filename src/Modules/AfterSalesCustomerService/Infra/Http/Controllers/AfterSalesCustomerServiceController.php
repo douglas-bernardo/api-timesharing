@@ -3,7 +3,7 @@
 
 namespace App\Modules\AfterSalesCustomerService\Infra\Http\Controllers;
 
-
+use Exception;
 use App\Shared\Facades\ContainerDependenceInjection\ContainerDependenceInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -17,8 +17,8 @@ class AfterSalesCustomerServiceController
 {
     /**
      * @param string $customerTSId
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     * @throws \Exception
+     * @return JsonResponse
+     * @throws Exception
      */
     public function index(string $customerTSId): JsonResponse
     {

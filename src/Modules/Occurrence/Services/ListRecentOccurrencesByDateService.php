@@ -3,9 +3,8 @@
 
 namespace App\Modules\Occurrence\Services;
 
-use App\Shared\Errors\ApiException;
-use Exception;
 use App\Modules\Occurrence\Repositories\IOccurrenceRepository;
+use Exception;
 
 class ListRecentOccurrencesByDateService
 {
@@ -21,8 +20,6 @@ class ListRecentOccurrencesByDateService
      */
     public function execute(string $date): array
     {
-        // $error = true;
-        // if ($error) throw new ApiException('Error: invalid date', 400);
         return $this->occurrenceRepository->loadByDate($date);
     }
 }

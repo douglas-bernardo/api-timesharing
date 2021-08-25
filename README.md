@@ -1,6 +1,6 @@
 <h1 style="display: flex; align-items: center; justify-content: center;" class="logo">
     <img width="100" style="margin-right: 15px;" src="https://ik.imagekit.io/rcjzrqiiqm7/logo_vacation_wyhJXU5a0.svg?updatedAt=1629735371452" alt="logo">
-  API - Timesharing
+  API Gateway - Timesharing
 </h1>
 
 &nbsp;
@@ -23,15 +23,15 @@
 ## 🔖&nbsp; Sobre
 
 ---
-O projeto **API Timesharing** faz parte do sistema de gerenciamento de ocorrências Renegociação Web. 
+O projeto **API Gateway - Timesharing** faz parte do sistema de gerenciamento de ocorrências Renegociação Web. 
 
 Esta API é responsável por recuperar as informações relacionadas as ocorrências que foram cadastradas no sistema Timesharing
 direcionadas ao departamento Renegociação.
 
 A aplicação é dividida em três partes:
-- [Backend API PHP - renegociacao (principal)](https://github.com/douglas-bernardo/app-renegociacao)
-- [Backend API PHP - timesharing (importação de ocorrências timesharing)](https://github.com/douglas-bernardo/api-timesharing)
-- [Frontend React](https://github.com/douglas-bernardo/renegociacao-web)
+- [Backend API - Renegociacao](https://github.com/douglas-bernardo/app-renegociacao)
+- [API Gateway - Sistema Timesharing](https://github.com/douglas-bernardo/api-timesharing)
+- [Frontend - SPA](https://github.com/douglas-bernardo/renegociacao-web)
 
 &nbsp;
 ---
@@ -107,7 +107,7 @@ Além disto é bom ter uma boa IDE ou editor para trabalhar com o código. Recom
     $ composer install
 
     # Iniciar o projeto
-    ## servidor imnutido PHP
+    ## servidor embutido PHP
     $ php -S localhost:8080 -t public/
     
     # ou acesse via localhost

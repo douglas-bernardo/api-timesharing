@@ -26,7 +26,7 @@
 O projeto **API Gateway - Timesharing** faz parte do sistema de gerenciamento de ocorrências Renegociação Web. 
 
 Esta API é responsável por recuperar as informações relacionadas as ocorrências que foram cadastradas no sistema Timesharing
-direcionadas ao departamento Renegociação.
+direcionadas ao departamento da Renegociação.
 
 A aplicação é dividida em três partes:
 - [Backend API - Renegociacao](https://github.com/douglas-bernardo/app-renegociacao)
@@ -42,9 +42,9 @@ A aplicação é dividida em três partes:
 Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 **Backend**
-- [PHP](https://www.php.net)
+- [PHP 7.4](https://www.php.net)
 
-#### Principais componentes PHP utilizados
+#### Principais componentes utilizados
 
 - Core - Framework
     - [The Front Controller](https://symfony.com/doc/current/create_framework/front_controller.html)
@@ -83,15 +83,18 @@ Ferramentas:
 - [Git](https://git-scm.com/)
 
 O SGBD do sistema timesharing foi desenvolvido com o ORACLE database, por tanto é necessário configurar seu ambiente com
-as bibliotecas necessárias para realizar a conexão com o ORACLE database instalando client oracle. Você pode obter mais 
-informações sobre como instalar o client oracle [aqui](https://www.oracle.com/br/database/technologies/instant-client/linux-x86-64-downloads.html#ic_x64_inst).
+as bibliotecas necessárias para realizar a conexão com o ORACLE database instalando client oracle. 
 
-Além disso será necessessário configurar o PHP para reconhecer e realizar a conexão de forma correta com o ORACLE database
+Você pode obter mais informações sobre como instalar o client oracle [aqui](https://www.oracle.com/br/database/technologies/instant-client/linux-x86-64-downloads.html#ic_x64_inst).
+
+Além disso será necessário configurar o PHP para reconhecer e realizar a conexão de forma correta com o ORACLE database
 Instalando PDO Oracle e OCI8 para PHP7+. 
+
 Você pode obter mais informações sobre como configurar PDO Oracle e OCI8 para PHP7+ em um ambiente
 linux [aqui](https://rosemberg.net.br/pt/instalando-pdo-oracle-e-oci8-do-php7-no-ubuntumint-oracle-11-2).
 
-Além disto é bom ter uma boa IDE ou editor para trabalhar com o código. Recomendo o [PHPStorm](https://www.jetbrains.com/pt-br/phpstorm/) da Jetbrains ou o [VSCode](https://code.visualstudio.com/).
+É bom ter uma boa IDE ou editor para trabalhar com o código. 
+Recomendo o [PHPStorm](https://www.jetbrains.com/pt-br/phpstorm/) da Jetbrains ou o [VSCode](https://code.visualstudio.com/).
 
 &nbsp;
 

@@ -46,16 +46,19 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 #### Principais componentes utilizados
 
-- Core - Framework
+- Core/Framework:
     - [The Front Controller](https://symfony.com/doc/current/create_framework/front_controller.html)
     - [The HttpKernel Component](https://symfony.com/doc/current/create_framework/http_kernel_controller_resolver.html)
     - [HttpFoundation](https://symfony.com/doc/current/create_framework/http_foundation.html)
-- Roteamento
+
+- Roteamento:
     - [Routing Component](https://symfony.com/doc/current/create_framework/routing.html)
-- Autenticação
+
+- Autenticação:
     - [lcobucci](https://github.com/lcobucci/jwt)
-- Injeção de dependência
-    - [The DependencyInjection Component](https://symfony.com/doc/current/create_framework/dependency_injection.html)
+
+- Injeção de Dependência:
+    - [The Dependency Injection Component](https://symfony.com/doc/current/create_framework/dependency_injection.html)
 
 **Frontend** - [Link Repositório Frontend](https://github.com/douglas-bernardo/app-renegociacao)
 - [ReactJS](https://reactjs.org)
